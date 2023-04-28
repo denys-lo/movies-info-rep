@@ -1,0 +1,31 @@
+.actions .actions__title {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.actions .actions__item .item__poster {
+    width: 100%;
+}
+
+.actions .actions__item {
+    position: relative;
+}
+
+.actions .actions__item .item__info span {
+    display: block;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.actions .actions__item .item__info {
+    font-size: 18px;
+    font-weight: bold;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,204, .6);
+    padding: 7px 14px;
+}

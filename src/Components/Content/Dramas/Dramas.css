@@ -1,0 +1,40 @@
+.dramas .dramas__title {
+    font-size: 18px;
+    margin: 8px 0;
+}
+
+.dramas .dramas__item .item__poster {
+    width: 100%;
+}
+
+.slick-prev {
+    z-index: 1;
+    left: 15px !important;
+}
+
+.slick-next {
+    right: 15px !important;
+}
+
+.dramas .dramas__item {
+    position: relative;
+}
+
+.dramas .dramas__item .item__info span {
+    display: block;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+.dramas .dramas__item .item__info {
+    font-size: 18px;
+    font-weight: bold;
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,204, .6);
+    padding: 7px 14px;
+}

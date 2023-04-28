@@ -1,0 +1,49 @@
+.details {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.details .container {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.details__info {
+    position:relative;
+    z-index: 1;
+    display: flex;
+    background: rgba(255,255,204, .6);
+    border-radius: 8px;
+    padding: 8px;
+}
+
+
+.details__background {
+    width: 100%;
+    height: 30vh;
+    object-fit: cover;
+}
+
+.details__poster {
+    max-width: 250px;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.details__movie h1 {
+    font-size: 36px;
+}
+
+.details__genres {
+    display: flex;
+    margin-top: 5px;
+}
+
+.details__movie .genre {
+    background: rgba(152,255,204, .9);
+    margin-right: 10px;
+    border-radius: 8px;
+    padding: 6px 8px;
+}
