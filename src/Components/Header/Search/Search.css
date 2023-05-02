@@ -9,6 +9,15 @@ label {
     border: 1px solid orange;
 }
 
+@media screen and (max-width: 768px) {
+    .search {
+        width: 150px;
+        border-radius: 15px;
+        padding: 4px 8px;
+        border: 1px solid orange;
+    }
+}
+
 .search:focus {
     outline: none !important;
     border: 1px solid red;

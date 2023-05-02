@@ -1,5 +1,5 @@
 .details {
-    height: 100vh;
+    min-height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -28,6 +28,7 @@
 
 .details__poster {
     max-width: 250px;
+    object-fit: cover;
     border-radius: 8px;
     margin-right: 15px;
 }
@@ -38,6 +39,7 @@
 
 .details__genres {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 5px;
 }
 
@@ -46,4 +48,24 @@
     margin-right: 10px;
     border-radius: 8px;
     padding: 6px 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .details__info {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .details__poster {
+        margin-right: 0;
+    }
+
+    .details__genres {
+        justify-content: center;
+    }
+
+    .details__movie h1 {
+        font-size: 24px;
+    }
 }

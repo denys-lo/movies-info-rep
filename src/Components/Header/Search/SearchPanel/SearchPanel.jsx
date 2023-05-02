@@ -2,15 +2,29 @@ import React from 'react';
 import './SearchPanel.css';
 import useSWR from "swr";
 import {Link} from "react-router-dom";
+import {useDispatch} from 'react-redux';
+import {getMovies} from "../../../../store/moviesSlice";
 
 function SearchPanel(props) {
+  const query = props.title.replace(' ', '%20');
   const fetcher = async (url) => {
     const response =  await fetch(url);
     const parsed = await response.json();
-    return parsed.results.slice(0, 5);
+    return parsed;
   }
 
-  const { data, error, isLoading } = useSWR(`https://api.themoviedb.org/3/search/movie?api_key=c41ad62b4ea4d13703e4c79ef2e0c5ef&language=en-US&query=${props.title}&page=1&include_adult=false`, fetcher, {fallbackData: []});
+  const link = `https://api.themoviedb.org/3/search/movie?api_key=c41ad62b4ea4d13703e4c79ef2e0c5ef&language=en-US&query=${query}&page=1&include_adult=false`;
+  const { data, error, isLoading } = useSWR(link, fetcher, {fallbackData: []});
+
+  const dispatch = useDispatch();
+  const addMovies = () => {
+    dispatch(getMovies({data: data, link: link}));
+  }
+
+  const checkPost = (movie) => {
+    if (`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}` === 'https://image.tmdb.org/t/p/w500/null') return 'https://dummyimage.com/300x150/000/fff.jpg';
+    return `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`;
+  }
 
   if (error) return <div>Error</div>
   if (isLoading) return <div>Loading...</div>
@@ -19,11 +33,11 @@ function SearchPanel(props) {
       props.setTitle('');
       document.querySelector(`.search_panel__more`).style.display = 'none';
     }}>
-      {data.map((movie) =>
-        <Link to={`/movie/${movie.id}`}>
+      {data.results.slice(0, 5).map((movie) =>
+        <Link to={`/movie/${movie.id}`} key={movie.id + "searching"}>
           <div className="movie">
             <img className="movie__img"
-                 src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                 src={checkPost(movie)}
                  alt={movie.title}
                  onLoad={() => {
                    document.querySelector(`.search_panel__more`).style.display = 'inline-block'
@@ -31,7 +45,7 @@ function SearchPanel(props) {
             <h4>{movie.title}</h4>
           </div>
         </Link>)}
-      <Link to="/search" className="search_panel__more">More</Link>
+      <Link to="/search" className="search_panel__more" onClick={addMovies}>More</Link>
     </div>
   );
 }

@@ -19,11 +19,27 @@
 .topmovie__info .topmovie__title {
     font-size: 72px;
     background: rgba(255,255,204, .6);
-    margin-bottom: 8px;
     border-radius: 15px;
-    padding: 7px 14px;
+    margin-bottom: 8px;
+    padding: 10px 16px 15px 16px;
     display: inline-block;
     transition: 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+    .topmovie__info .topmovie__title {
+        font-size: 48px;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .topmovie__info .topmovie__title {
+        font-size: 38px;
+    }
+}
+
+.topmovie__info .topmovie__title a {
+    display: inline-block;
 }
 
 .topmovie__info .topmovie__title:hover {
